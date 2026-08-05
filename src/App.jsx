@@ -1,10 +1,14 @@
 import React from 'react'
 import LeftSidebar from './components/LeftSidebar'
+import Middle from './components/Middle'
 
 const App = () => {
   return (
-    <div className="h-screen flex bg-gray-950 text-gray-100">
-     <LeftSidebar />
+    <div className="flex h-screen overflow-hidden bg-gray-950 text-gray-100">
+      <LeftSidebar />
+      <main className="min-w-0 flex-1 overflow-y-auto">
+        <Middle />
+      </main>
     </div>
   )
 }
