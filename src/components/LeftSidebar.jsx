@@ -22,25 +22,31 @@ const LeftSidebar = () => {
   const progress = 75
 
   return (
-    <aside className="relative z-10 flex h-full w-64 shrink-0 flex-col border-r border-gray-800 bg-gray-900 px-4 py-5 text-gray-100 shadow-[4px_0_24px_-4px_rgba(0,0,0,0.45)]">
-      <div className="mb-8 flex shrink-0 items-center gap-3 px-2">
-        <img src={logo} alt="Logo" className="mt-1 h-10 w-10 shrink-0" />
+    <aside className="relative z-10 flex h-full w-72 shrink-0 flex-col border-r border-gray-800 bg-gray-900 px-5 py-6 text-gray-100 shadow-[4px_0_24px_-4px_rgba(0,0,0,0.45)] sm:w-80 sm:px-6 sm:py-8">
+      <div className="mb-10 flex shrink-0 items-center gap-3.5 px-1 sm:mb-12 sm:gap-4">
+        <img
+          src={logo}
+          alt="Habitify"
+          className="h-12 w-12 shrink-0 drop-shadow-[0_4px_12px_rgba(139,92,246,0.35)] sm:h-14 sm:w-14"
+        />
         <div className="flex min-w-0 flex-col">
-          <h1 className="text-lg font-semibold leading-tight text-white">Habitify</h1>
-          <span className="text-xs font-normal leading-snug text-gray-400">
+          <h1 className="text-xl font-semibold leading-tight tracking-tight text-white sm:text-2xl">
+            Habitify
+          </h1>
+          <span className="mt-0.5 text-sm font-normal leading-snug text-gray-400">
             Track your habits
           </span>
         </div>
       </div>
 
       <nav className="min-h-0 flex-1 overflow-y-auto">
-        <ul className="flex flex-col gap-3">
+        <ul className="flex flex-col gap-2.5 sm:gap-3">
           {navItems.map(({ label, Icon, active }) => (
             <li key={label}>
               <a
                 href="#"
                 className={[
-                  'flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-semibold transition-colors',
+                  'flex items-center gap-3.5 rounded-xl px-4 py-3.5 text-base font-semibold transition-colors sm:gap-4 sm:py-4',
                   active
                     ? 'bg-violet-500/15 text-violet-300'
                     : 'text-gray-300 hover:bg-gray-800 hover:text-white',
@@ -49,7 +55,7 @@ const LeftSidebar = () => {
                 <Icon
                   aria-hidden="true"
                   className={[
-                    'h-5 w-5 shrink-0 transition-colors',
+                    'h-5 w-5 shrink-0 transition-colors sm:h-6 sm:w-6',
                     active ? 'text-violet-300' : 'text-gray-400',
                   ].join(' ')}
                   strokeWidth={2}
@@ -61,12 +67,14 @@ const LeftSidebar = () => {
         </ul>
       </nav>
 
-      <div className="mt-4 shrink-0 border-t border-gray-800 px-2 pt-4 pb-1">
-        <p className="text-sm font-bold text-white">Keep going! 💪</p>
-        <p className="mt-2 text-sm font-medium text-gray-400">You&apos;re doing great.</p>
-        <div className="mt-4 flex items-center gap-3">
+      <div className="mt-6 shrink-0 border-t border-gray-800 px-1 pt-5 pb-1 sm:pt-6">
+        <p className="text-base font-bold text-white">Keep going! 💪</p>
+        <p className="mt-2 text-sm font-medium text-gray-400 sm:text-base">
+          You&apos;re doing great.
+        </p>
+        <div className="mt-4 flex items-center gap-3 sm:mt-5">
           <div
-            className="h-3 flex-1 overflow-hidden rounded-full bg-gray-800"
+            className="h-3.5 flex-1 overflow-hidden rounded-full bg-gray-800"
             role="progressbar"
             aria-label="Habit progress"
             aria-valuenow={progress}
@@ -78,7 +86,9 @@ const LeftSidebar = () => {
               style={{ width: `${progress}%` }}
             />
           </div>
-          <span className="w-9 text-sm font-bold text-gray-300">{progress}%</span>
+          <span className="w-10 text-sm font-bold text-gray-300 sm:text-base">
+            {progress}%
+          </span>
         </div>
       </div>
     </aside>

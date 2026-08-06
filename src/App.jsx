@@ -1,6 +1,8 @@
 import React from 'react'
 import LeftSidebar from './components/LeftSidebar'
 import Middle from './components/Middle'
+import RightSidebar from './components/rightSidebar'
+
 
 const App = () => {
   return (
@@ -9,6 +11,7 @@ const App = () => {
       <main className="min-w-0 flex-1 overflow-y-auto">
         <Middle />
       </main>
+      <RightSidebar />
     </div>
   )
 }
