@@ -9,3 +9,54 @@ body,
   color: #f3f4f6; /* gray-100 */
   color-scheme: dark;
 }
+
+[data-theme='light'] .habit-row {
+  border-color: #e5e7eb;
+  background-color: #ffffff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme='light'] .habit-row:hover {
+  background-color: #f8fafc;
+}
+
+.habit-row::before {
+  position: absolute;
+  inset: 10px auto 10px 0;
+  width: 3px;
+  content: '';
+  border-radius: 999px;
+  background: #8b5cf6;
+  opacity: 0;
+  transform: scaleY(0.35);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.habit-row:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+[data-theme='light'] .habit-title {
+  color: #111827;
+}
+
+[data-theme='light'] .habit-title.line-through {
+  color: #9ca3af;
+}
+
+[data-theme='light'] .habit-meta {
+  color: #6b7280;
+}
+
+[data-theme='dark'] .habit-row {
+  border-color: #1f2937;
+  background-color: #0f1724;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .habit-row:hover {
+  background-color: #161b2d;
+}
