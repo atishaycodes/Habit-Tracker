@@ -79,7 +79,7 @@ const RightSidebar = ({ isDark }) => {
           )}
         </button>
         
-        <div className="h-11 w-11 rounded-2xl p-0.5 bg-gradient-to-tr from-purple-500 to-indigo-500 cursor-pointer hover:scale-105 transition-transform duration-300 shadow-lg shadow-purple-500/30">
+        <div className="h-11 w-11 rounded-2xl p-0.5 bg-linear-to-tr from-purple-500 to-indigo-500 cursor-pointer hover:scale-105 transition-transform duration-300 shadow-lg shadow-purple-500/30">
           <img
             src={userSettings.avatarUrl}
             alt="Profile"
