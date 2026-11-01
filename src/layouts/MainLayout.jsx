@@ -1,35 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import LeftSidebar from '../components/LeftSidebar'
-import RightSidebar from '../components/rightSidebar'
+import Navbar from '../components/Navbar'
+import Toast from '../components/Toast'
+import CommandPalette from '../components/CommandPalette'
+import QuickAddModal from '../components/QuickAddModal'
+import RoutineRunnerModal from '../components/RoutineRunnerModal'
 import { useAppContext } from '../context/AppContext'
 
 const MainLayout = () => {
   const { isDark, theme } = useAppContext()
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
 
   return (
     <div
       data-theme={theme}
-      className={[
-        'flex h-screen overflow-hidden transition-colors duration-300',
-        isDark ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-950',
-      ].join(' ')}
+      className={`flex h-screen w-screen overflow-hidden ${
+        isDark ? 'bg-slate-900 text-slate-100' : 'bg-slate-50 text-slate-900'
+      }`}
     >
-      <LeftSidebar isDark={isDark} />
-      
-      <main className="min-w-0 flex-1 overflow-y-auto relative">
-        {/* Subtle background glow effect for SaaS feel */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className={`absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full mix-blend-multiply filter blur-[100px] opacity-20 ${isDark ? 'bg-purple-900' : 'bg-purple-200'}`}></div>
-          <div className={`absolute top-[40%] -right-[10%] w-[40%] h-[50%] rounded-full mix-blend-multiply filter blur-[100px] opacity-20 ${isDark ? 'bg-blue-900' : 'bg-blue-200'}`}></div>
-        </div>
-        
-        <div className="relative z-10 h-full">
-          <Outlet />
-        </div>
-      </main>
+      {/* Sleek, unmagnified Left Sidebar */}
+      <LeftSidebar
+        mobileOpen={mobileSidebarOpen}
+        setMobileOpen={setMobileSidebarOpen}
+      />
 
-      <RightSidebar isDark={isDark} />
+      {/* Main View Area */}
+      <div className="flex flex-1 flex-col min-w-0 h-full overflow-hidden">
+        {/* Top Navbar */}
+        <Navbar onToggleMobile={() => setMobileSidebarOpen((prev) => !prev)} />
+
+        {/* Dynamic Route Content */}
+        <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
+          <Outlet />
+        </main>
+      </div>
+
+      {/* Global Modals & Notifications */}
+      <Toast />
+      <CommandPalette />
+      <QuickAddModal />
+      <RoutineRunnerModal />
     </div>
   )
 }
